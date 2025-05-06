@@ -38,7 +38,7 @@ const Team: React.FC = () => {
   <div className="container mx-auto px-4">
     {/* Simplified Heading Section */}
     <div className="max-w-3xl mx-auto text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#1f4051] mb-6">
         Our Technical Squad
       </h2>
       <p className="text-lg text-black">
@@ -62,7 +62,7 @@ const Team: React.FC = () => {
 
   </div>
   <div className="w-full md:w-2/3 text-center md:text-left mt-8 pr-7">
-    <h2 className="text-3xl md:text-4xl font-bold text-black mb-10">{teamMembers[0].name}</h2>
+    <h2 className="text-3xl md:text-4xl font-bold text-[#1f4051] mb-10">{teamMembers[0].name}</h2>
     <p className="text-black text-lg font-semibold">{teamMembers[0].role}</p>
     <p className="text-black mb-4 mt-5">{teamMembers[0].bio}</p>
     <p className='text-black mb-4 mt-2'>{teamMembers[0].bio2}</p>
