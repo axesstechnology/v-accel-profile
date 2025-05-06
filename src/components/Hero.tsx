@@ -3,7 +3,6 @@ import { ArrowDownCircle, Brain, Shield, Wand2, Scale, Repeat2, Code } from 'luc
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -70,7 +69,7 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 pt-24 pb-16 text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mt-16">
           <h1 className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
             What Makes Our Code
             <span className="block mt-2 bg-gradient-to-r from-accent via-accent-light to-accent bg-clip-text text-transparent">
