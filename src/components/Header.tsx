@@ -1,16 +1,48 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
+const sections = ['About', 'Services', 'Tech Stack', 'Team', 'Contact'];
+
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      // Always white background now, no need to track scroll position for navbar styling
+      
+      // Find the current active section
+      const sectionElements = sections.map(s => {
+        const id = s.toLowerCase().replace(' ', '-');
+        const element = document.getElementById(id);
+        return { id, element };
+      }).filter(item => item.element);
+      
+      // Calculate which section is most visible in the viewport
+      let mostVisibleSection = null;
+      let maxVisibility = 0;
+      
+      sectionElements.forEach(({ id, element }) => {
+        const rect = element.getBoundingClientRect();
+        // Calculate how much of the section is visible in the viewport
+        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+        const visibilityRatio = visibleHeight / element.offsetHeight;
+        
+        if (visibilityRatio > maxVisibility) {
+          maxVisibility = visibilityRatio;
+          mostVisibleSection = id;
+        }
+      });
+      
+      setActiveSection(mostVisibleSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -18,38 +50,69 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Add smooth scrolling with offset to prevent header overlap
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Close menu if open
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+      
+      // Get header height to offset the scroll
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      
+      // Calculate position
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+      
+      // Smooth scroll
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white shadow-md py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md "
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <img 
-            src="/v-accel-logo.png" 
-            alt="V-ACCEL" 
-            className="h-12 w-auto"
+          <img
+            src="src/images/va.png"
+            alt="V-ACCEL"
+            className="h-[110px] w-[200px]"
           />
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
-            {['About', 'Services', 'Tech Stack', 'Team', 'Contact'].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className={`text-sm font-medium transition-colors hover:text-primary-600 ${
-                    scrolled ? 'text-gray-800' : 'text-gray-100'
-                  }`}
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
+            {sections.map((item) => {
+              const id = item.toLowerCase().replace(' ', '-');
+              const isActive = activeSection === id;
+
+              return (
+                <li key={item}>
+                  <a
+                    href={`#${id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(id);
+                    }}
+                    className={`text-xl font-[500] hover:text-accent-dark transition-colors ${
+                      isActive
+                        ? 'text-accent-dark'
+                        : 'text-gray-800'
+                    }`}
+                  >
+                    {item}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -67,17 +130,27 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <ul className="py-4">
-            {['About', 'Services', 'Tech Stack', 'Team', 'Contact'].map((item) => (
-              <li key={item} className="border-b border-gray-100 last:border-0">
-                <a
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="block px-6 py-3 text-gray-800 hover:bg-gray-50"
-                  onClick={toggleMenu}
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
+            {sections.map((item) => {
+              const id = item.toLowerCase().replace(' ', '-');
+              const isActive = activeSection === id;
+
+              return (
+                <li key={item} className="border-b border-gray-100 last:border-0">
+                  <a
+                    href={`#${id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(id);
+                    }}
+                    className={`block px-6 py-3 hover:bg-gray-50 ${
+                      isActive ? 'text-accent-dark font-medium' : 'text-gray-800'
+                    }`}
+                  >
+                    {item}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
