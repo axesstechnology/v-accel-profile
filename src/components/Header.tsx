@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import logo from '../images/va.png'
 
 const sections = ['About', 'Services', 'Tech Stack', 'Team', 'Contact'];
 
@@ -81,7 +82,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <img
-            src="src/images/va.png"
+            src={logo}
             alt="V-ACCEL"
             className="h-[110px] w-[200px]"
           />
