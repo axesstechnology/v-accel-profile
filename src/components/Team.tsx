@@ -151,7 +151,7 @@ const Team: React.FC = () => {
     },
     {
       name: 'Software Developers',
-      count: 10,
+      count: 12,
       icon: <FaLaptopCode className="text-5xl text-indigo-600" />,
     },
     {
