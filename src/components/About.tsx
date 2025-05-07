@@ -73,7 +73,7 @@ const About: React.FC = () => {
       
       <div className="container mx-auto px-4 relative">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 text-3xl md:text-4xl font-bold text-primary-700 mb-6">
+          <h2 className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 text-3xl md:text-4xl font-bold text-[#1f4051] mb-6">
             Our Development DNA
           </h2>
           <p className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-100 text-lg text-gray-600">
@@ -137,7 +137,7 @@ const About: React.FC = () => {
         </div>
 
         <div className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-700 mt-16 p-8 bg-primary-50 rounded-xl border border-primary-100">
-          <h3 className="text-2xl font-semibold text-primary-700 mb-4 text-center">Our Mission</h3>
+          <h3 className="text-2xl font-semibold text-[#1f4051] mb-4 text-center">Our Mission</h3>
           <p className="text-primary-600 text-center max-w-3xl mx-auto">
             "Empowering businesses through innovative AI solutions - We don't just write code, we architect digital transformations that redefine possibilities."
           </p>

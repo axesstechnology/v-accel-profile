@@ -184,7 +184,7 @@ const TechStack: React.FC = () => {
     <Section id="tech-stack" className="bg-gradient-to-b from-primary-50 to-white py-20" ref={techStackRef}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-700 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1f4051] mb-6">
             Our Technology Arsenal
           </h2>
           <p className="text-lg text-primary-600">
