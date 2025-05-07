@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import logo from '../images/va.png'
 
 const sections = ['About', 'Services', 'Tech Stack', 'Team', 'Contact'];
 
@@ -95,6 +96,7 @@ const Header: React.FC = () => {
   };
 
   return (
+
     <header className="fixed top-0 left-0 w-full z-50" ref={headerRef}>
       {/* Desktop Header */}
       <div className="hidden md:flex items-center justify-between px-6 py-3 bg-white shadow-md w-full">
@@ -106,6 +108,17 @@ const Header: React.FC = () => {
         <div className="text-center flex-1">
           <h1 className="text-5xl font-bold text-[#1f4051]">V-Accel AI Dynamics</h1>
           <p className="text-accent-dark font-medium">Accelerating Your Success with AI</p>
+
+    <header
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md "
+    >
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        <div className="flex items-center">
+          <img
+            src={logo}
+            alt="V-ACCEL"
+            className="h-[110px] w-[200px]"
+          />
         </div>
         <nav>
           <ul className="flex space-x-6">
