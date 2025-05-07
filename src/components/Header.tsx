@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from '../images/va.png'
+import logo from '../images/va.png';
 
 const sections = ['About', 'Services', 'Tech Stack', 'Team', 'Contact'];
 
@@ -40,6 +40,8 @@ const Header: React.FC = () => {
       const headerHeight = headerRef.current.offsetHeight;
       
       sectionElements.forEach(({ id, element }) => {
+        if (!element) return;
+        
         const rect = element.getBoundingClientRect();
         // Calculate how much of the section is visible in the viewport
         // Account for header height
@@ -96,29 +98,19 @@ const Header: React.FC = () => {
   };
 
   return (
-
     <header className="fixed top-0 left-0 w-full z-50" ref={headerRef}>
       {/* Desktop Header */}
       <div className="hidden md:flex items-center justify-between px-6 py-3 bg-white shadow-md w-full">
-        <img
-          src="src/images/Group 14.svg"
-          alt="V-ACCEL"
-          className="h-[100px] w-40 object-contain -ml-6"
-        />
-        <div className="text-center flex-1">
-          <h1 className="text-5xl font-bold text-[#1f4051]">V-Accel AI Dynamics</h1>
-          <p className="text-accent-dark font-medium">Accelerating Your Success with AI</p>
-
-    <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md "
-    >
-      <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <img
             src={logo}
             alt="V-ACCEL"
-            className="h-[110px] w-[200px]"
+            className="h-[100px] w-40 object-contain"
           />
+        </div>
+        <div className="text-center flex-1">
+          <h1 className="text-5xl font-bold text-[#1f4051]">V-Accel AI Dynamics</h1>
+          <p className="text-accent-dark font-medium">Accelerating Your Success with AI</p>
         </div>
         <nav>
           <ul className="flex space-x-6">
@@ -147,11 +139,11 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile Header - with fixed positioning */}
-      <div className="fixed top-0 left-0 right-0 md:hidden flex items-center justify-between px-6 py-3 bg-white shadow-md z-50" style={{ height: `${mobileHeaderHeight}px` }}>
+      <div className="md:hidden flex items-center justify-between px-6 py-3 bg-white shadow-md" style={{ height: `${mobileHeaderHeight}px` }}>
         {/* Left: Logo */}
         <div className="flex items-center">
           <img
-            src="src/images/Group 14.svg"
+            src={logo}
             alt="V-ACCEL"
             className="h-12 w-auto object-contain"
           />
@@ -180,11 +172,14 @@ const Header: React.FC = () => {
             <ul className="space-y-4">
               {sections.map((section, index) => {
                 const id = section.toLowerCase().replace(' ', '-');
+                const isActive = activeSection === id;
                 return (
                   <li key={index}>
                     <a 
                       href={`#${id}`} 
-                      className="text-gray-800 block py-2"
+                      className={`block py-2 ${
+                        isActive ? 'text-accent-dark font-semibold' : 'text-gray-800'
+                      }`}
                       onClick={(e) => {
                         e.preventDefault();
                         scrollToSection(id);
