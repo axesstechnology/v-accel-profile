@@ -10,8 +10,8 @@ const Team: React.FC = () => {
     {
       name: 'Venkatesan J',
       role: 'CEO & AI Architect',
-      bio: 'Visionary CEO of V-Accel AI Dynamics, leading the company with over 8 years of expertise in AI-driven solutions.',
-      bio2:' He is deeply passionate about harnessing the power of AI to create innovative solutions that meet evolving business needs.',
+      bio: 'Visionary CEO of V-Accel AI Dynamics, leading the company with over 8 years of expertise in AI-driven solutions',
+      bio2:' He is deeply passionate about harnessing the power of AI to create innovative solutions that meet evolving business needs',
       expertise: ['AI & Machine Learning', 'Software Development', 'Leadership & Team Building', 'Business Strategy', 'Client Relations'],
       image: image,
     },
@@ -42,7 +42,7 @@ const Team: React.FC = () => {
         Our Technical Squad
       </h2>
       <p className="text-lg text-black">
-        Our diverse team of experts combines deep technical knowledge with industry experience to deliver exceptional AI solutions.
+        Our diverse team of experts combines deep technical knowledge with industry experience to deliver exceptional AI solutions
       </p>
     </div>
     {/* CEO Section */}

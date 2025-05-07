@@ -19,6 +19,7 @@ const Contact: React.FC = () => {
     success: false,
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,21 +50,40 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus({
-      submitted: true,
-      success: true,
-      message: 'Thank you! Your message has been received.',
-    });
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
+    setIsSubmitting(true);
+  
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwDV-feEg9VmZMVu1hVBkSF-q1y-u4_MVUx6BAVKKj_97ZASb4UF5piSO6HXmbRSQpnAA/exec', {
+        method: 'POST',
+        mode: "no-cors",
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      // With mode: "no-cors", we can't access response details
+      // But if we reached this point without an error being thrown, consider it a success
+      setFormStatus({
+        submitted: true,
+        success: true,
+        message: 'Thank you! Your message has been received.',
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message: 'There was an error submitting the form. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
+  
   const contactInfo = [
     {
       icon: <PhoneCall className="h-6 w-6 text-accent" />,
@@ -90,7 +110,7 @@ const Contact: React.FC = () => {
             Get In Touch
           </h2>
           <p className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-100 text-lg text-gray-300">
-            Have a project in mind or want to learn more about our services? We'd love to hear from you.
+            Have a project in mind or want to learn more about our services? We'd love to hear from you
           </p>
         </div>
 
@@ -179,10 +199,13 @@ const Contact: React.FC = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-3 px-4 bg-accent hover:bg-accent-dark text-primary-900 rounded-lg flex items-center justify-center font-medium transition-colors"
+                    disabled={isSubmitting}
+                    className={`w-full py-3 px-4 bg-accent hover:bg-accent-dark text-primary-900 rounded-lg flex items-center justify-center font-medium transition-colors ${
+                      isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                    }`}
                   >
-                    Send Message
-                    <Send className="ml-2 h-5 w-5" />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {!isSubmitting && <Send className="ml-2 h-5 w-5" />}
                   </button>
                 </form>
               )}

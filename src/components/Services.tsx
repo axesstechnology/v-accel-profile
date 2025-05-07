@@ -152,10 +152,10 @@ const Services: React.FC = () => {
                     </div>
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-semibold text-primary-700 mb-3 group-hover:text-accent transition-colors">
+                    <h3 className="text-xl font-semibold text-primary-700 mb-3 group-hover:text-accent transition-colors text-center">
                       {service.title}
                     </h3>
-                    <p className="text-primary-600 mb-4 flex-grow">{service.description}</p>
+                    <p className="text-primary-600 mb-4 flex-grow text-center">{service.description}</p>
                     <div className="grid grid-cols-2 gap-2">
                       {service.features.map((feature, featureIndex) => (
                         <div 
@@ -191,10 +191,10 @@ const Services: React.FC = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-primary-700 mb-3 group-hover:text-accent transition-colors ">
+                  <h3 className="text-xl font-semibold text-primary-700 mb-3 group-hover:text-accent transition-colors text-center">
                     {microservicesService.title}
                   </h3>
-                  <p className="text-primary-600 mb-6">{microservicesService.description}</p>
+                  <p className="text-primary-600 mb-6 text-center">{microservicesService.description}</p>
                   
                   {/* Vertical Roadmap */}
                   <div className="relative">
