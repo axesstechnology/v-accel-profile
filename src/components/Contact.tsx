@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Send, PhoneCall, Mail, MapPin } from 'lucide-react';
+import { Send, PhoneCall, Mail, MapPin ,ThumbsUp, Frown} from 'lucide-react';
 import Section from '../layouts/Section';
 
 const Contact: React.FC = () => {
@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
       setFormStatus({
         submitted: true,
         success: true,
-        message: 'Thank you! Your message has been received.',
+        message: `we'll contact you in a short while.`,
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
@@ -106,22 +106,39 @@ const Contact: React.FC = () => {
     <Section id="contact" className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 py-20" ref={contactRef}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 text-3xl md:text-4xl font-bold text-white mb-6">
-            Get In Touch
+          <h2 className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 text-3xl md:text-4xl font-bold text-accent mb-6">
+          Let's Connect!
           </h2>
           <p className="animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-100 text-lg text-gray-300">
-            Have a project in mind or want to learn more about our services? We'd love to hear from you
+          We’re excited to collaborate with you on your fantastic project
+            {/* Have a project in mind or want to learn more about our services? We'd love to hear from you */}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-200">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white/20">
-              {formStatus.submitted ? (
-                <div className={`text-center p-8 ${formStatus.success ? 'text-accent' : 'text-red-400'}`}>
-                  <div className="text-5xl mb-4">{formStatus.success ? '🎉' : '😓'}</div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {formStatus.success ? 'Message Sent Successfully!' : 'Something went wrong'}
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white/20 min-h-[640px] flex items-center justify-center">
+          {formStatus.submitted ? (
+                <div className={`text-center text-2xl p-8 ${formStatus.success ? 'text-accent' : 'text-red-400'}`}>
+                  {/* <div className="text-5xl mb-4 color-accent">{formStatus.success ? '👍' : '😓'}</div> */}
+                  
+                  <div
+  className={`flex justify-center mb-6 transition-transform duration-500 ${
+    formStatus.success
+      ? 'text-green-500 hover:text-green-600 animate-bounce'
+      : 'text-red-500 hover:text-red-600 animate-pulse'
+  }`}
+>
+  {formStatus.success ? (
+    <ThumbsUp size={48} strokeWidth={2.5} />
+  ) : (
+    <Frown size={48} strokeWidth={2.5} />
+  )}
+</div>
+
+
+                  <h3 className="text-2xl font-semibold mb-2">
+                    {formStatus.success ? 'Thank You!' : 'Something went wrong'}
                   </h3>
                   <p>{formStatus.message}</p>
                   {!formStatus.success && (
@@ -204,7 +221,7 @@ const Contact: React.FC = () => {
                       isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                     }`}
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? 'Sending...' : 'Submit'}
                     {!isSubmitting && <Send className="ml-2 h-5 w-5" />}
                   </button>
                 </form>

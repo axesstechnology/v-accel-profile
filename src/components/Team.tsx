@@ -67,7 +67,7 @@ const Team: React.FC = () => {
     <p className="text-black mb-4 mt-5">{teamMembers[0].bio}</p>
     <p className='text-black mb-4 mt-2'>{teamMembers[0].bio2}</p>
     <div>
-      <h4 className="text-md font-semibold text-black mb-5 mt-7">Areas of Expertise:</h4>
+      <h4 className="text-md font-semibold text-black mb-5 mt-7">Areas of Expertise</h4>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {teamMembers[0].expertise.map((skill, idx) => (
           <span key={idx} className="px-0 py-2 text-indigo-700 rounded-full text-sm">

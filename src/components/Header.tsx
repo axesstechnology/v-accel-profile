@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from '../images/va.png';
+import logo from '../images/Group 14.svg';
 
 const sections = ['About', 'Services', 'Tech Stack', 'Team', 'Contact'];
 
@@ -110,7 +110,7 @@ const Header: React.FC = () => {
         </div>
         <div className="text-center flex-1">
           <h1 className="text-5xl font-bold text-[#1f4051]">V-Accel AI Dynamics</h1>
-          <p className="text-accent-dark font-medium">Accelerating Your Success with AI</p>
+          <p className="text-accent-dark font-medium pt-2">Accelerating Your Success with AI</p>
         </div>
         <nav>
           <ul className="flex space-x-6">
