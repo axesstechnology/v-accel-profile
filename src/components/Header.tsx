@@ -18,10 +18,12 @@ const Header: React.FC = () => {
         : mobileHeaderHeight;
       
       document.body.style.paddingTop = `${headerHeight}px`;
-    };
+    }; 
 
     updateBodyPadding();
     window.addEventListener('resize', updateBodyPadding);
+
+    
 
     const handleScroll = () => {
       if (!headerRef.current) return;
