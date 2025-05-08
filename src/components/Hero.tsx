@@ -121,12 +121,12 @@ const Hero: React.FC = () => {
             >
               Start Your Custom Journey
             </a>
-            <a
+            {/* <a
               href="#about"
               className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-lg font-medium hover:bg-white/20 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
             >
               Explore Our DNA
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

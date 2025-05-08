@@ -28,7 +28,7 @@ const TechStack: React.FC = () => {
   const techStacks = [
     {
       title: 'Custom Software Development',
-      subtitle: 'Revolutionize Your Operations: Transform with Software Tailored to Your Needs.',
+      subtitle: 'Revolutionize Your Operations: Transform with Software Tailored to Your Needs',
       image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1920',
       categories: [
         {

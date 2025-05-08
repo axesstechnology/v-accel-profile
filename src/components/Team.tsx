@@ -10,8 +10,8 @@ const Team: React.FC = () => {
     {
       name: 'Venkatesan J',
       role: 'CEO & AI Architect',
-      bio: 'Visionary CEO of V-Accel AI Dynamics, leading the company with over 8 years of expertise in AI-driven solutions.',
-      bio2:' He is deeply passionate about harnessing the power of AI to create innovative solutions that meet evolving business needs.',
+      bio: 'Visionary CEO of V-Accel AI Dynamics, leading the company with over 8 years of expertise in AI-driven solutions',
+      bio2:' He is deeply passionate about harnessing the power of AI to create innovative solutions that meet evolving business needs',
       expertise: ['AI & Machine Learning', 'Software Development', 'Leadership & Team Building', 'Business Strategy', 'Client Relations'],
       image: image,
     },
@@ -42,7 +42,7 @@ const Team: React.FC = () => {
         Our Technical Squad
       </h2>
       <p className="text-lg text-black">
-        Our diverse team of experts combines deep technical knowledge with industry experience to deliver exceptional AI solutions.
+        Our diverse team of experts combines deep technical knowledge with industry experience to deliver exceptional AI solutions
       </p>
     </div>
     {/* CEO Section */}
@@ -67,7 +67,7 @@ const Team: React.FC = () => {
     <p className="text-black mb-4 mt-5">{teamMembers[0].bio}</p>
     <p className='text-black mb-4 mt-2'>{teamMembers[0].bio2}</p>
     <div>
-      <h4 className="text-md font-semibold text-black mb-5 mt-7">Areas of Expertise:</h4>
+      <h4 className="text-md font-semibold text-black mb-5 mt-7">Areas of Expertise</h4>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {teamMembers[0].expertise.map((skill, idx) => (
           <span key={idx} className="px-0 py-2 text-indigo-700 rounded-full text-sm">
