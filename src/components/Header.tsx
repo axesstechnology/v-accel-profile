@@ -367,8 +367,8 @@ const Header: React.FC = () => {
       setIsLoading(false);
       setTimeout(() => {
         setShowHeading(true);
-      }, 300);
-    }, 1000);
+      }, 250);
+    }, 500);
   };
 
   const toggleMenu = () => {
@@ -427,7 +427,7 @@ const Header: React.FC = () => {
           </div>
           <div className="text-center flex-1 pl-20 ml-20">
             <h1 className={`text-5xl font-bold text-[#1f4051] transition-all duration-700 ${showHeading ? 'opacity-100' : 'opacity-0 transform translate-y-4'}`}>V-Accel AI Dynamics</h1>
-            <p className={`text-accent-dark text-lg pt-2 transition-all duration-700 delay-100 ${showHeading ? 'opacity-100' : 'opacity-0 transform translate-y-4'}`}>Accelerating Your Success with AI</p>
+            <b><p className={`text-accent-dark text-xl  pt-2 transition-all duration-700 delay-100 ${showHeading ? 'opacity-100' : 'opacity-0 transform translate-y-4'}`}>Accelerating Your Success with AI</p></b>
           </div>
           <nav>
             <ul className="flex space-x-5">
